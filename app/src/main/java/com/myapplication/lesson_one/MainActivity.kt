@@ -2,6 +2,7 @@ package com.myapplication.lesson_one
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,19 +30,21 @@ class MainActivity : AppCompatActivity() {
             println("Количество элементов в массиве : " +size)
         }
         arrayNumbers.also { it.add(7) }
-        writeToConloseWelcomeText(SealedLanguageWelcome.RuLanguageWelcome())
+        writeToConloseAndToastWelcomeText(SealedLanguageWelcome.RuLanguageWelcome())
 
     }
 
 
 
-    fun writeToConloseWelcomeText(sealedLanguageWelcome: SealedLanguageWelcome){
+    fun writeToConloseAndToastWelcomeText(sealedLanguageWelcome: SealedLanguageWelcome){
         when(sealedLanguageWelcome){
             is SealedLanguageWelcome.EnLanguageWelcome->{
                 println(sealedLanguageWelcome.welcome)
+                Toast.makeText(this,sealedLanguageWelcome.welcome,Toast.LENGTH_LONG).show()
             }
             is SealedLanguageWelcome.RuLanguageWelcome->{
                 println(sealedLanguageWelcome.welcome)
+                Toast.makeText(this,sealedLanguageWelcome.welcome,Toast.LENGTH_LONG).show()
             }
         }
     }
